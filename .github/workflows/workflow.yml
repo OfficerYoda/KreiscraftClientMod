@@ -13,7 +13,7 @@ jobs:
           node-version: '18'
       - uses: CupOfTea696/gh-action-auto-release@v1.0.0
         with:
-          title: "Release: ${{ github_ref }}"
+          title: "Release: ${{ github.ref_name }}"
           draft: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
