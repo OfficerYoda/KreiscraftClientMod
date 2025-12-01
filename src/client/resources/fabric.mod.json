@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "kreiscraftclientmod",
+  "version": "${version}",
+
+  "name": "KreiscraftClientMod",
+  "description": "",
+  "authors": [],
+  "contact": {},
+
+  "license": "All-Rights-Reserved",
+  "icon": "icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "client": ["de.rusticprism.kreiscraftclientmod.client.KreiscraftclientmodClient"]
+  },
+
+  "mixins": [
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.18",
+    "fabric": "*",
+    "minecraft": "1.21.10"
+  }
+}
