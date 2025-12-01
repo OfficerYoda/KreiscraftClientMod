@@ -31,6 +31,7 @@ public class KreiscraftclientmodClient implements ClientModInitializer {
     public void onInitializeClient() {
         PayloadTypeRegistry.playC2S().register(PluginMessagePacket.ID, PluginMessagePacket.CODEC);
         checkForFreecam();
+        log.info("Successfully initialized KreiscraftClientMod");
 
         ClientPlayConnectionEvents.JOIN.register(((handler, sender, client) -> {
             readCheats();
