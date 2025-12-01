@@ -32,10 +32,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: CupOfTea696/gh-action-auto-release@v1.0.0
+      - uses: softprops/action-gh-release@v2
         with:
-          title: "Release: ${{ github.ref_name }}"
-          tag: 'latest'
+          name: "Release: ${{ github.ref_name }}"
+          tag_name: 'latest'
           draft: false
+          files: release-files/*.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
