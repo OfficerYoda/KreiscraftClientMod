@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "kreiscraftclientmod",
-  "version": "${version}",
+  "version": "latest",
 
   "name": "KreiscraftClientMod",
   "description": "",
@@ -15,13 +15,12 @@
   "entrypoints": {
     "client": ["de.rusticprism.kreiscraftclientmod.client.KreiscraftclientmodClient"]
   },
-
   "mixins": [
+    "KreiscraftClientMod.mixins.json"
   ],
-
   "depends": {
     "fabricloader": ">=0.18",
     "fabric": "*",
-    "minecraft": "1.21.10"
+    "minecraft": ">=1.21.10"
   }
 }
