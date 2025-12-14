@@ -10,6 +10,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.fabricmc.loader.api.metadata.ModMetadata;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.network.ServerAddress;
 import net.minecraft.network.PacketByteBuf;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,13 +27,13 @@ public class KreiscraftclientmodClient implements ClientModInitializer {
     private boolean freecaminstalled = false;
     private String cheats = "false";
     private final List<String> cheatsList = new ArrayList<>();
+    public static ServerAddress address;
 
     @Override
     public void onInitializeClient() {
         PayloadTypeRegistry.playC2S().register(PluginMessagePacket.ID, PluginMessagePacket.CODEC);
         checkForFreecam();
         log.info("Successfully initialized KreiscraftClientMod");
-
         ClientPlayConnectionEvents.JOIN.register(((handler, sender, client) -> {
             readCheats();
             for (ModContainer mod : FabricLoader.getInstance().getAllMods()) {

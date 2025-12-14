@@ -8,23 +8,17 @@ import net.minecraft.util.Identifier;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class PluginMessagePacket implements CustomPayload {
+public record PluginMessagePacket(byte[] data) implements CustomPayload {
 
-    private final byte[] data;
+    public PluginMessagePacket(ByteBuf buf) {
+        this(getWrittenBytes(buf));
+    }
 
     public static Id<PluginMessagePacket> ID = new Id<>(Identifier.of("kreiscraft", "mod_checker"));
 
     public static PacketCodec<ByteBuf, PluginMessagePacket> CODEC = PacketCodec.ofStatic(
             (buf, value) -> writeBytes(buf, value.data),
             PluginMessagePacket::new);
-
-    public PluginMessagePacket(byte[] data) {
-        this.data = data;
-    }
-
-    public PluginMessagePacket(ByteBuf buf) {
-        this(getWrittenBytes(buf));
-    }
 
     @Override
     public Id<? extends CustomPayload> getId() {
